@@ -1,4 +1,4 @@
-package com.example.openai.controller;
+package com.example.springai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +16,10 @@ public class ChatController
     public ChatController(ChatClient.Builder chatClientBuilder){
         this.chatClient =chatClientBuilder.build();
     }
+
     @GetMapping("/chat")
     public String chat(@RequestParam("message") String message){
         return chatClient.prompt(message).call().content();
     }
+
 }
